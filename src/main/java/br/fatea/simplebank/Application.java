@@ -13,6 +13,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
 public class Application implements WebApplicationInitializer {
 
@@ -23,9 +24,15 @@ public class Application implements WebApplicationInitializer {
 		Dynamic appServlet = servletContext.addServlet("appServlet", new DispatcherServlet(applicationContext));
 		//Deve passar o applicationContext para o servlet, caso contrário ele irá procurar o XML referente ao contexto, recebendo o erro:
 		//Could not open ServletContext resource [/WEB-INF/appServlet-servlet.xml]
-
 		appServlet.setLoadOnStartup(1);
-		appServlet.addMapping("/");
+		appServlet.addMapping("/api/*");
+		
+		
+		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet(applicationContext);
+		messageDispatcherServlet.setTransformWsdlLocations(true);
+		Dynamic wsServlet = servletContext.addServlet("wsServlet", messageDispatcherServlet);
+		wsServlet.setLoadOnStartup(2);
+		wsServlet.addMapping("/ws/*");
 		
 		FilterRegistration.Dynamic filter = servletContext.addFilter("openEntityManagerInViewFilter", buildOpenEntityManagerFilter());
 		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/");
