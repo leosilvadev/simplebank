@@ -5,11 +5,11 @@
     
     <complexType name="creditCard">
     	<sequence>
-    		<element name="owner-name" type="string" nillable="false"/>
-    		<element name="card-number" type="int" nillable="false"/>
+    		<element name="ownerName" type="string" nillable="false"/>
+    		<element name="cardNumber" type="int" nillable="false"/>
     		<element name="code" type="int" nillable="false"/>
-    		<element name="valid-month" type="int" nillable="false"/>
-    		<element name="valid-year" type="int" nillable="false"/>
+    		<element name="validMonth" type="int" nillable="false"/>
+    		<element name="validYear" type="int" nillable="false"/>
     	</sequence>
     </complexType>
     
@@ -17,8 +17,8 @@
 	    <complexType>
 	    	<sequence>
 	    		<element name="order" type="string" nillable="false"/>
-	    		<element name="credit-card" type="tns:creditCard" nillable="false"/>
-	    		<element name="registration-date" type="dateTime" nillable="false"/>
+	    		<element name="creditCard" type="tns:creditCard" nillable="false"/>
+	    		<element name="registrationDate" type="dateTime" nillable="false"/>
 	    	</sequence>
 	    </complexType>
     </element>
@@ -28,7 +28,7 @@
 	    	<sequence>
 	    		<element name="order" type="string" nillable="false"/>
 	    		<element name="status" type="tns:paymentStatus" nillable="false"/>
-	    		<element name="process-date" type="dateTime" nillable="false"/>
+	    		<element name="processDate" type="dateTime" nillable="false"/>
 	    	</sequence>
 	    </complexType>
     </element>

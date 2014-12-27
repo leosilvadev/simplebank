@@ -14,18 +14,18 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WebServiceConfig extends WsConfigurerAdapter {
 
 	@Bean(name = "payment")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+	public DefaultWsdl11Definition defaultWsdl11Definition() {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("paymentPort");
 		wsdl11Definition.setLocationUri("/ws/payment");
 		wsdl11Definition.setTargetNamespace("http://fatea.br/simplebank/soap/payment");
-		wsdl11Definition.setSchema(countriesSchema);
+		wsdl11Definition.setSchema(paymentSchema());
 		return wsdl11Definition;
 	}
 
 	@Bean
-	public XsdSchema countriesSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("models/credit_cards.xsd"));
+	public XsdSchema paymentSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("models/payment.xsd"));
 	}
 	
 }
