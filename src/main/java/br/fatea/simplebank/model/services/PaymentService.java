@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import br.fatea.simplebank.model.converters.Converter;
 import br.fatea.simplebank.model.domains.Payment;
 import br.fatea.simplebank.model.repositories.PaymentRepository;
-import br.fatea.simplebank.soap.payment.PaymentRequest;
-import br.fatea.simplebank.soap.payment.PaymentResponse;
-import br.fatea.simplebank.soap.payment.PaymentStatus;
+import br.fatea.simplebank.soap.payment.v1.PaymentRequest;
+import br.fatea.simplebank.soap.payment.v1.PaymentResponse;
+import br.fatea.simplebank.soap.payment.v1.PaymentStatus;
 import br.fatea.simplebank.util.DatetimeUtil;
 
 @Service

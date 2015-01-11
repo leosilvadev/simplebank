@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import br.fatea.simplebank.model.domains.CreditCard;
 import br.fatea.simplebank.model.domains.Payment;
 import br.fatea.simplebank.model.domains.ValidationDate;
-import br.fatea.simplebank.soap.payment.PaymentRequest;
+import br.fatea.simplebank.soap.payment.v1.PaymentRequest;
 import br.fatea.simplebank.util.DatetimeUtil;
 
 @Component

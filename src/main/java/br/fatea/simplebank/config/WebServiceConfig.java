@@ -27,30 +27,31 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean
 	public ValidationInterceptor soapValidationInterceptor(){
 		ValidationInterceptor interceptor = new ValidationInterceptor();
-		interceptor.setSchema(paymentXSDResource());
+		interceptor.setSchema(paymentV1XSDResource());
 		interceptor.setValidateRequest(true);
 		interceptor.setValidateResponse(false);
 		return interceptor;
 	}
 	
-	@Bean(name = "payment")
-	public DefaultWsdl11Definition paymentWsdlDefinition() {
+	@Bean(name = "v1_payment")
+	public DefaultWsdl11Definition paymentV1WsdlDefinition() {
 		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
-		wsdlDefinition.setPortTypeName("paymentPort");
+		wsdlDefinition.setPortTypeName("PaymentPort");
 		wsdlDefinition.setLocationUri("/ws/payment");
-		wsdlDefinition.setTargetNamespace("http://fatea.br/simplebank/soap/payment");
+		wsdlDefinition.setTargetNamespace("http://fatea.br/simplebank/soap/payment/v1");
 		wsdlDefinition.setSchema(paymentSchema());
+		wsdlDefinition.setServiceName("PaymentService");
 		return wsdlDefinition;
 	}
 
 	@Bean
 	public XsdSchema paymentSchema() {
-		return new SimpleXsdSchema(paymentXSDResource());
+		return new SimpleXsdSchema(paymentV1XSDResource());
 	}
 
 	@Bean
-	public ClassPathResource paymentXSDResource(){
-		return new ClassPathResource("models/payment.xsd");
+	public ClassPathResource paymentV1XSDResource(){
+		return new ClassPathResource("models/payment_v1.xsd");
 	}
 	
 }

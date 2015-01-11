@@ -25,8 +25,7 @@ public class Application implements WebApplicationInitializer {
 		//Deve passar o applicationContext para o servlet, caso contrário ele irá procurar o XML referente ao contexto, recebendo o erro:
 		//Could not open ServletContext resource [/WEB-INF/appServlet-servlet.xml]
 		appServlet.setLoadOnStartup(1);
-		appServlet.addMapping("/api/*");
-		
+		appServlet.addMapping("/api/*", "/app/*");
 		
 		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet(applicationContext);
 		messageDispatcherServlet.setTransformWsdlLocations(true);
@@ -35,7 +34,7 @@ public class Application implements WebApplicationInitializer {
 		wsServlet.addMapping("/ws/*");
 		
 		FilterRegistration.Dynamic filter = servletContext.addFilter("openEntityManagerInViewFilter", buildOpenEntityManagerFilter());
-		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/api/*","/ws/*");
+		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/api/*", "/app/*","/ws/*");
 		
 		servletContext.addListener(new ContextLoaderListener(applicationContext));
 	}

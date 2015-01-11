@@ -30,6 +30,11 @@ public class CreditCard {
 	private String number;
 
 	@NotNull
+	@NotEmpty
+	@Column(name="CRC_OWNER")
+	private String ownerName;
+
+	@NotNull
 	@Embedded
 	@Column(name="CRC_VALIDATION_DATE")
 	private ValidationDate validationDate;
@@ -81,6 +86,14 @@ public class CreditCard {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 
 	@Override

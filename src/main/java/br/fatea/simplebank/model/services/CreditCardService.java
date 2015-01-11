@@ -7,7 +7,7 @@ import br.fatea.simplebank.exceptions.CreditCardNotFoundException;
 import br.fatea.simplebank.model.domains.CreditCard;
 import br.fatea.simplebank.model.domains.ValidationDate;
 import br.fatea.simplebank.model.repositories.CreditCardRepository;
-import br.fatea.simplebank.model.resources.CreditCardResource;
+import br.fatea.simplebank.model.resources.v1.CreditCardResource;
 
 @Service
 public class CreditCardService {
@@ -24,6 +24,7 @@ public class CreditCardService {
 		creditCardResource.setNumber(creditCard.getNumber());
 		creditCardResource.setValidateMonth(creditCard.getValidationDate().getMonth());
 		creditCardResource.setValidateYear(creditCard.getValidationDate().getYear());
+		creditCardResource.setOwner(creditCard.getOwnerName());
 		return creditCardResource;
 	}
 
@@ -31,6 +32,7 @@ public class CreditCardService {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCode(resource.getCode());
 		creditCard.setNumber(resource.getNumber());
+		creditCard.setOwnerName(resource.getOwner());
 		
 		ValidationDate validationDate = new ValidationDate();
 		validationDate.setMonth(resource.getValidateMonth());

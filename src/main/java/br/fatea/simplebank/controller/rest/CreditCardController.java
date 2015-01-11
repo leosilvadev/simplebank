@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.fatea.simplebank.model.domains.CreditCard;
-import br.fatea.simplebank.model.resources.CreditCardResource;
-import br.fatea.simplebank.model.resources.DefaultResource;
+import br.fatea.simplebank.model.resources.v1.CreditCardResource;
+import br.fatea.simplebank.model.resources.v1.HTTPResource;
 import br.fatea.simplebank.model.services.CreditCardService;
 
 @RestController
-@RequestMapping("/creditcard")
+@RequestMapping("/v1/creditcard")
 public class CreditCardController {
 	
 	@Autowired
 	private CreditCardService creditCardService;
 
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<DefaultResource> save(@RequestBody @Valid CreditCardResource resource, BindingResult bindingResult){
+	public ResponseEntity<HTTPResource> save(@RequestBody @Valid CreditCardResource resource, BindingResult bindingResult){
 		if(bindingResult.hasErrors()){
-			return new ResponseEntity<DefaultResource>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<HTTPResource>(HttpStatus.BAD_REQUEST);
 			
 		} else {
 			CreditCard creditCard = creditCardService.save(resource);
-			DefaultResource defaultResource = new DefaultResource();
+			HTTPResource defaultResource = new HTTPResource();
 			defaultResource.addLink(linkTo(methodOn(this.getClass()).findByNumber(creditCard.getNumber())).withSelfRel());
-			return new ResponseEntity<DefaultResource>(defaultResource, HttpStatus.CREATED);
+			return new ResponseEntity<HTTPResource>(defaultResource, HttpStatus.CREATED);
 			
 		}
 	}

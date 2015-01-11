@@ -1,4 +1,4 @@
-package br.fatea.simplebank.model.resources;
+package br.fatea.simplebank.model.resources.v1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @XmlRootElement(name="resource")
 @JsonTypeName("resource")
 @JsonInclude(Include.NON_NULL)
-public class DefaultResource {
+public class HTTPResource {
 
-	@XmlElement(required=false, name="error-message")
-	@JsonProperty(required=false, value="error-message")
+	@XmlElement(required=false, name="error_message")
+	@JsonProperty(required=false, value="error_message")
 	private String errorMessage;
 
 	@XmlElementWrapper

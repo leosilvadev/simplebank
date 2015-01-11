@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
 
-import br.fatea.simplebank.soap.payment.PaymentStatus;
+import br.fatea.simplebank.soap.payment.v1.PaymentStatus;
 
 @Entity
 @Table(name="TBL_PAYMENT")

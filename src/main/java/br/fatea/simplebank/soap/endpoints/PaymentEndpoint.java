@@ -7,13 +7,13 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import br.fatea.simplebank.model.services.PaymentService;
-import br.fatea.simplebank.soap.payment.PaymentRequest;
-import br.fatea.simplebank.soap.payment.PaymentResponse;
+import br.fatea.simplebank.soap.payment.v1.PaymentRequest;
+import br.fatea.simplebank.soap.payment.v1.PaymentResponse;
 
 @Endpoint
 public class PaymentEndpoint {
 	
-	private static final String NAMESPACE_URI = "http://fatea.br/simplebank/soap/payment";
+	private static final String NAMESPACE_URI = "http://fatea.br/simplebank/soap/payment/v1";
 	
 	@Autowired private PaymentService paymentService;
 	
