@@ -3,32 +3,22 @@
 		xmlns:tns="http://fatea.br/simplebank/soap/payment" 
 		targetNamespace="http://fatea.br/simplebank/soap/payment">
     
-    <complexType name="creditCard">
-    	<sequence>
-    		<element name="ownerName" type="string" nillable="false"/>
-    		<element name="cardNumber" type="int" nillable="false"/>
-    		<element name="code" type="int" nillable="false"/>
-    		<element name="validMonth" type="int" nillable="false"/>
-    		<element name="validYear" type="int" nillable="false"/>
-    	</sequence>
-    </complexType>
-    
-    <element name="paymentRequest">
+    <element name="PaymentRequest">
 	    <complexType>
 	    	<sequence>
 	    		<element name="order" type="string" nillable="false"/>
 	    		<element name="creditCard" type="tns:creditCard" nillable="false"/>
-	    		<element name="registrationDate" type="dateTime" nillable="false"/>
+	    		<element name="registrationDate" type="tns:dateType" nillable="false"/>
 	    	</sequence>
 	    </complexType>
     </element>
     
-    <element name="paymentResponse">
+    <element name="PaymentResponse">
 	    <complexType>
 	    	<sequence>
 	    		<element name="order" type="string" nillable="false"/>
 	    		<element name="status" type="tns:paymentStatus" nillable="false"/>
-	    		<element name="processDate" type="dateTime" nillable="false"/>
+	    		<element name="processDate" type="tns:dateType" nillable="false"/>
 	    	</sequence>
 	    </complexType>
     </element>
@@ -42,5 +32,33 @@
     		<enumeration value="CANCELED"/>
     	</restriction>
     </simpleType>
+    
+    <complexType name="creditCard">
+    	<sequence>
+    		<element name="ownerName" type="tns:ownerName" nillable="false"/>
+    		<element name="cardNumber" type="tns:cardNumber" nillable="false"/>
+    		<element name="code" type="int" nillable="false"/>
+    		<element name="validMonth" type="int" nillable="false"/>
+    		<element name="validYear" type="int" nillable="false"/>
+    	</sequence>
+    </complexType>
+	
+    <simpleType name="cardNumber">
+    	<restriction base="string">
+    		<pattern value="[0-9]{13,18}"/>
+		</restriction>
+    </simpleType>
+    
+    <simpleType name="ownerName">
+    	<restriction base="string">
+    		<pattern value="[a-zA-Z_]+"/>
+    	</restriction>
+    </simpleType>
+    
+	<simpleType name="dateType">
+		<restriction base="string">
+			<pattern value="[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]" />
+		</restriction>
+	</simpleType>
     
 </schema>

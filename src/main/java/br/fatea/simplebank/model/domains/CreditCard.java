@@ -11,10 +11,12 @@ import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="TBL_CREDIT_CARD")
+@Audited
 public class CreditCard {
 
 	@Id
@@ -79,6 +81,44 @@ public class CreditCard {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + ((number == null) ? 0 : number.hashCode());
+		result = prime * result
+				+ ((validationDate == null) ? 0 : validationDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CreditCard other = (CreditCard) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		if (number == null) {
+			if (other.number != null)
+				return false;
+		} else if (!number.equals(other.number))
+			return false;
+		if (validationDate == null) {
+			if (other.validationDate != null)
+				return false;
+		} else if (!validationDate.equals(other.validationDate))
+			return false;
+		return true;
 	}
 	
 }

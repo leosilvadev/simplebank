@@ -35,6 +35,9 @@ public class PersistenceConfig {
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "br.fatea.simplebank.model.domains";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL = "hibernate.hbm2ddl.auto";
+
+    private static final String PROPERTY_HIBERNATE_ENVERS_PREFIX = "org.hibernate.envers.audit_table_prefix";
+    private static final String PROPERTY_HIBERNATE_ENVERS_SUFIX = "org.hibernate.envers.audit_table_suffix";
 	
 	@Autowired private Environment environment;
 	
@@ -61,7 +64,9 @@ public class PersistenceConfig {
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY));
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
-		jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL));;
+		jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL));
+		jpaProterties.put(PROPERTY_HIBERNATE_ENVERS_PREFIX, environment.getRequiredProperty(PROPERTY_HIBERNATE_ENVERS_PREFIX));
+		jpaProterties.put(PROPERTY_HIBERNATE_ENVERS_SUFIX, environment.getRequiredProperty(PROPERTY_HIBERNATE_ENVERS_SUFIX));
 
 		entityManagerFactoryBean.setJpaProperties(jpaProterties);
 		

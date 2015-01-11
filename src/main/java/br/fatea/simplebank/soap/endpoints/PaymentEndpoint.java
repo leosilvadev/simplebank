@@ -17,7 +17,7 @@ public class PaymentEndpoint {
 	
 	@Autowired private PaymentService paymentService;
 	
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "paymentRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "PaymentRequest")
 	@ResponsePayload
 	public PaymentResponse payment(@RequestPayload PaymentRequest paymentRequest){
 		return paymentService.pay(paymentRequest);
