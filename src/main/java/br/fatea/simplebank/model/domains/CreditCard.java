@@ -26,7 +26,7 @@ public class CreditCard {
 	
 	@NotNull
 	@NotEmpty
-	@Column(name = "CRC_NUMBER", unique = true)
+	@Column(name = "CRC_NUMBER")
 	private String number;
 	
 	@NotNull
@@ -45,7 +45,7 @@ public class CreditCard {
 	private Integer code;
 	
 	@Version
-	@Column(name = "SYS_VERSION")
+	@Column(name="SYS_VERSION")
 	private Integer version;
 
 	public Long getId() {
@@ -63,7 +63,7 @@ public class CreditCard {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-
+	
 	public String getOwnerName() {
 		return ownerName;
 	}
@@ -71,7 +71,7 @@ public class CreditCard {
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
-
+	
 	public ValidationDate getValidationDate() {
 		return validationDate;
 	}
@@ -103,8 +103,6 @@ public class CreditCard {
 		result = prime * result + ((number == null) ? 0 : number.hashCode());
 		result = prime * result
 				+ ((ownerName == null) ? 0 : ownerName.hashCode());
-		result = prime * result
-				+ ((validationDate == null) ? 0 : validationDate.hashCode());
 		return result;
 	}
 
@@ -126,11 +124,6 @@ public class CreditCard {
 			if (other.ownerName != null)
 				return false;
 		} else if (!ownerName.equals(other.ownerName))
-			return false;
-		if (validationDate == null) {
-			if (other.validationDate != null)
-				return false;
-		} else if (!validationDate.equals(other.validationDate))
 			return false;
 		return true;
 	}

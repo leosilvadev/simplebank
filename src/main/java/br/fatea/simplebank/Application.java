@@ -22,14 +22,16 @@ public class Application implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext applicationContext = buildApplicationContext();
 		Dynamic appServlet = servletContext.addServlet("appServlet", new DispatcherServlet(applicationContext));
 		appServlet.setLoadOnStartup(1);
-		appServlet.addMapping("/api/*");
+		appServlet.addMapping("/api/*", "/app/*");
+		
 		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet(applicationContext);
 		messageDispatcherServlet.setTransformWsdlLocations(true);
 		Dynamic wsServlet = servletContext.addServlet("wsServlet", messageDispatcherServlet);
 		wsServlet.setLoadOnStartup(2);
 		wsServlet.addMapping("/ws/*");
+		
 		FilterRegistration.Dynamic filter = servletContext.addFilter("openEntityManagerInViewFilter", buildOpenEntityManagerFilter());
-		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/");
+		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/api/*", "/app/*","/ws/*");
 		servletContext.addListener(new ContextLoaderListener(applicationContext));
 	}
 
@@ -48,5 +50,4 @@ public class Application implements WebApplicationInitializer {
 	private EnumSet<DispatcherType> getDispatcherTypes() {
 		return EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ASYNC);
 	}
-	
 }

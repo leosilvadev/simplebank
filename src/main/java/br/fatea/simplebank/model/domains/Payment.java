@@ -10,17 +10,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import br.fatea.simplebank.soap.payment.v1.PaymentStatus;
 
 @Entity
 @Table(name="TBL_PAYMENT")
-@Audited
+@Audited(targetAuditMode=RelationTargetAuditMode.NOT_AUDITED)
 public class Payment {
 	
 	@Id
@@ -28,7 +30,7 @@ public class Payment {
 	@Column(name="PAY_ID")
 	private Long id;
 	
-	@Column(name="PAY_ORDER", unique=true)
+	@Column(name="PAY_ORDER")
 	@NotNull
 	private String order;
 	
@@ -42,14 +44,28 @@ public class Payment {
 	private Calendar registrationDate;
 
 	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="CRC_ID")
 	private CreditCard creditCard;
+
+	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="SUS_ID")
+	private SystemUser owner;
 	
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getOrder() {
+		return order;
+	}
+
+	public void setOrder(String order) {
+		this.order = order;
 	}
 
 	public PaymentStatus getStatus() {
@@ -76,12 +92,12 @@ public class Payment {
 		this.creditCard = creditCard;
 	}
 
-	public String getOrder() {
-		return order;
+	public SystemUser getOwner() {
+		return owner;
 	}
 
-	public void setOrder(String order) {
-		this.order = order;
+	public void setOwner(SystemUser owner) {
+		this.owner = owner;
 	}
 
 	@Override
@@ -89,6 +105,7 @@ public class Payment {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((order == null) ? 0 : order.hashCode());
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		return result;
 	}
 
@@ -105,6 +122,11 @@ public class Payment {
 			if (other.order != null)
 				return false;
 		} else if (!order.equals(other.order))
+			return false;
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
 			return false;
 		return true;
 	}

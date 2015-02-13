@@ -17,6 +17,7 @@ import br.fatea.simplebank.interceptors.SOAPValidationInterceptor;
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
+	
 	@Override
 	public void addInterceptors(List<EndpointInterceptor> interceptors) {
 		super.addInterceptors(interceptors);
@@ -31,14 +32,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		interceptor.setValidateResponse(false);
 		return interceptor;
 	}
-
+	
 	@Bean(name = "v1_payment")
 	public DefaultWsdl11Definition paymentV1WsdlDefinition() {
 		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
 		wsdlDefinition.setPortTypeName("PaymentPort");
 		wsdlDefinition.setLocationUri("/ws/payment");
-		wsdlDefinition
-				.setTargetNamespace("http://fatea.br/simplebank/soap/payment/v1");
+		wsdlDefinition.setTargetNamespace("http://fatea.br/simplebank/soap/payment/v1");
 		wsdlDefinition.setSchema(paymentSchema());
 		wsdlDefinition.setServiceName("PaymentService");
 		return wsdlDefinition;

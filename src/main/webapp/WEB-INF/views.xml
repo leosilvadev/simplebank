@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="offline_main" template="/WEB-INF/views/offline/templates/main.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/offline/templates/header.jsp" type="template" />
+		<put-attribute name="footer" value="/WEB-INF/views/offline/templates/footer.jsp" type="template" />
+	</definition>
+	<definition name="login" extends="offline_main">
+		<put-attribute name="content" value="/WEB-INF/views/offline/login.jsp" type="template" />
+	</definition>
+</tiles-definitions>

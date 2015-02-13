@@ -23,8 +23,7 @@
 	<simpleType name="paymentStatus">
 		<restriction base="string">
 			<enumeration value="OPENED" />
-			<enumeration value="PAID_NOT_CONFIRMED" />
-			<enumeration value="PAID_CONFIRMED" />
+			<enumeration value="CONFIRMED" />
 			<enumeration value="REVERSED" />
 			<enumeration value="CANCELED" />
 		</restriction>
@@ -45,7 +44,7 @@
 	</simpleType>
 	<simpleType name="ownerName">
 		<restriction base="string">
-			<pattern value="[a-zA-Z_]+" />
+			<pattern value="[a-zA-Z_ ]+" />
 		</restriction>
 	</simpleType>
 	<simpleType name="dateType">

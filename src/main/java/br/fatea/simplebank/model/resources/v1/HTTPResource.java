@@ -1,4 +1,4 @@
-package br.fatea.simplebank.model.dtos;
+package br.fatea.simplebank.model.resources.v1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +17,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "resource")
+@XmlRootElement(name="resource")
 @JsonTypeName("resource")
 @JsonInclude(Include.NON_NULL)
 public class HTTPResource {
-	
-	@XmlElement(required = false, name = "error_message")
-	@JsonProperty(required = false, value = "error_message")
+
+	@XmlElement(required=false, name="error_message")
+	@JsonProperty(required=false, value="error_message")
 	private String errorMessage;
-	
+
 	@XmlElementWrapper
-	@XmlElement(name = "link")
+	@XmlElement(name="link")
 	private List<Link> links;
 
 	public String getErrorMessage() {
@@ -37,14 +37,14 @@ public class HTTPResource {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
-
+	
 	public List<Link> getLinks() {
 		return links;
 	}
-
-	public void add(Link link) {
-		if (links == null)
-			links = new ArrayList<Link>();
+	
+	public void add(Link link){
+		if(links==null) links = new ArrayList<Link>();
 		links.add(link);
 	}
+	
 }

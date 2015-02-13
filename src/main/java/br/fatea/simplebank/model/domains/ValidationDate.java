@@ -69,6 +69,6 @@ public class ValidationDate {
 		} else if (!year.equals(other.year))
 			return false;
 		return true;
-	}
+	}	
 	
 }

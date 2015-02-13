@@ -1,5 +1,8 @@
 package br.fatea.simplebank.controllers.rest;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
-
 import br.fatea.simplebank.model.domains.CreditCard;
-import br.fatea.simplebank.model.dtos.CreditCardResource;
-import br.fatea.simplebank.model.dtos.HTTPResource;
+import br.fatea.simplebank.model.resources.v1.CreditCardResource;
+import br.fatea.simplebank.model.resources.v1.HTTPResource;
 import br.fatea.simplebank.model.services.CreditCardService;
 
 @RestController

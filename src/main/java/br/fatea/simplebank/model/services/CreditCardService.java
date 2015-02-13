@@ -7,17 +7,17 @@ import org.springframework.transaction.annotation.Transactional;
 import br.fatea.simplebank.exceptions.CreditCardNotFoundException;
 import br.fatea.simplebank.model.domains.CreditCard;
 import br.fatea.simplebank.model.domains.ValidationDate;
-import br.fatea.simplebank.model.dtos.CreditCardResource;
 import br.fatea.simplebank.model.repositories.CreditCardRepository;
+import br.fatea.simplebank.model.resources.v1.CreditCardResource;
 
 @Service
 public class CreditCardService {
 	
 	@Autowired private CreditCardRepository creditCardRepository;
 
-	public CreditCardResource findByNumber(String number) {
+	public CreditCardResource findByNumber(String number){
 		CreditCard creditCard = creditCardRepository.findOneByNumber(number);
-		if (creditCard == null) throw new CreditCardNotFoundException();
+		if(creditCard==null) throw new CreditCardNotFoundException();
 		CreditCardResource creditCardResource = new CreditCardResource();
 		creditCardResource.setCode(creditCard.getCode());
 		creditCardResource.setNumber(creditCard.getNumber());
@@ -26,8 +26,7 @@ public class CreditCardService {
 		creditCardResource.setOwner(creditCard.getOwnerName());
 		return creditCardResource;
 	}
-
-	@Transactional
+	
 	public CreditCard save(CreditCardResource resource) {
 		CreditCard creditCard = new CreditCard();
 		creditCard.setCode(resource.getCode());

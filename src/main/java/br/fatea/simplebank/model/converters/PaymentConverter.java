@@ -21,7 +21,6 @@ public class PaymentConverter implements Converter<PaymentRequest, Payment> {
 		CreditCard creditCard = buildDomainCreditCard(dto);
 		return buildDomainPayment(dto, creditCard);
 	}
-	
 	private Payment buildDomainPayment(PaymentRequest dto, CreditCard creditCard){
 		Payment payment = new Payment();
 		payment.setOrder(dto.getOrder());
@@ -38,7 +37,7 @@ public class PaymentConverter implements Converter<PaymentRequest, Payment> {
 		creditCard.setCode(dto.getCreditCard().getCode());
 		creditCard.setNumber(dto.getCreditCard().getCardNumber());
 		creditCard.setValidationDate(
-				new ValidationDate(dto.getCreditCard().getValidMonth(), dto.getCreditCard().getValidYear())
+			new ValidationDate(dto.getCreditCard().getValidMonth(), dto.getCreditCard().getValidYear())
 		);
 		return creditCard;
 	}
