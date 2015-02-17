@@ -7,7 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<c:set var="path" value="${pageContext.request.contextPath}"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="${path}/static/libs/jquery-2.1.3.min.js"></script>
+	<script src="${path}/static/libs/bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap.min.css");
+		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap-theme.min.css");
+	</style>
 </head>
 <body>
 	<header>
