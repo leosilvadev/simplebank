@@ -5,14 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
-<footer id="main-footer">
-	SimpleBank - All rights reserved
-</footer>
-
-<style>
-	footer#main-footer{
-		font-size: 1.1em;
-		padding: 2px;
-		text-align: center
-	}
-</style>
+<ul class="nav navbar-stacked">
+	<li class="active"><a href="users"><i class="glyphicon glyphicon-user"></i> Users</a></li>
+</ul>

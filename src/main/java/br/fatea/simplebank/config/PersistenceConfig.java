@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -56,7 +57,8 @@ public class PersistenceConfig {
 		entityManagerFactoryBean.setDataSource(dataSource());
 		entityManagerFactoryBean.setPackagesToScan(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN);
 		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-
+		entityManagerFactoryBean.setJpaDialect(hibernateJpaDialect());
+		
 		Properties jpaProterties = new Properties();
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_DIALECT, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
@@ -67,6 +69,11 @@ public class PersistenceConfig {
 		jpaProterties.put(PROPERTY_NAME_HIBERNATE_ENVERS_SUFFIX, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_ENVERS_SUFFIX));
 		entityManagerFactoryBean.setJpaProperties(jpaProterties);
 		return entityManagerFactoryBean;
+	}
+	
+	@Bean
+	public HibernateJpaDialect hibernateJpaDialect(){
+		return new HibernateJpaDialect();
 	}
 	
 	@Bean

@@ -11,23 +11,30 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="${path}/static/libs/jquery-2.1.3.min.js"></script>
 	<script src="${path}/static/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${path}/static/libs/bootstrap/js/sidebar.js"></script>
 	<style type="text/css">
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap.min.css");
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap-theme.min.css");
-		#content{
-			background-image: linear-gradient(to bottom,rgba(213, 214, 219, 0.66),rgba(255, 255, 255, 0.66) 100%);
-		}
+		@IMPORT url("${path}/static/libs/bootstrap/css/sidebar.css");
 	</style>
 </head>
-	<body>
-		<header>
-			<tiles:insertAttribute name="header" />
-		</header>
-		<section id="content">
-			<tiles:insertAttribute name="content" />
-		</section>
-		<footer>
-			<tiles:insertAttribute name="footer" />
-		</footer>
-	</body>
+	
+<body>
+  <header>
+	<tiles:insertAttribute name="toolbar" />
+  </header>
+  
+  <section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-5 col-sm-2 col-md-2 sidebar sidebar-left sidebar-animate sidebar-md-show">
+					<tiles:insertAttribute name="menu" />
+				</div>
+				<div class="main col-md-10 col-md-offset-2">
+					<tiles:insertAttribute name="content" />
+				</div>
+			</div>
+		</div>
+  </section>
+</body>
 </html>

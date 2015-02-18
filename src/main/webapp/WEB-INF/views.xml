@@ -3,6 +3,8 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+
+	<!-- OFFLINE VIEWS -->
 	<definition name="offline_main" template="/WEB-INF/views/offline/templates/main.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/offline/templates/header.jsp" type="template" />
 		<put-attribute name="footer" value="/WEB-INF/views/offline/templates/footer.jsp" type="template" />
@@ -10,4 +12,22 @@
 	<definition name="login" extends="offline_main">
 		<put-attribute name="content" value="/WEB-INF/views/offline/login.jsp" type="template" />
 	</definition>
+	<!-- OFFLINE VIEWS -->
+	
+	
+	
+	<!-- ONLINE VIEWS -->
+	<definition name="online_main" template="/WEB-INF/views/online/templates/main.jsp">
+		<put-attribute name="toolbar" value="/WEB-INF/views/online/templates/toolbar.jsp" type="template" />
+		<put-attribute name="menu" value="/WEB-INF/views/online/templates/menu.jsp" type="template" />
+		<put-attribute name="footer" value="/WEB-INF/views/online/templates/footer.jsp" type="template" />
+	</definition>
+	<definition name="list_user" extends="online_main">
+		<put-attribute name="content" value="/WEB-INF/views/online/user/list.jsp" type="template" />
+	</definition>
+	
+	<definition name="table_list_user" template="/WEB-INF/views/online/user/table.jsp" />
+	
+	<!-- ONLINE VIEWS -->
+	
 </tiles-definitions>
