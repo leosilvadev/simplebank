@@ -32,31 +32,3 @@
 		</nav>
 	</div>
 </header>
-
-<style>
-	header.navbar {
-		background-image: linear-gradient(to bottom,#A8B4CB 0,#838EAE 100%);
-		border-bottom: 1px solid #7F879E;
-		margin-bottom: 0px;
-	}
-	
-	header.navbar a{
-		color: white;
-	}
-	
-	header.navbar li>a:HOVER{
-		background-image: linear-gradient(to bottom,#A8B4CB 0,#838EAE 60%);
-	}
-	
-	header.navbar li.active{
-		background-image: linear-gradient(to bottom,#A8B4CB 0,#838EAE 60%);
-	}
-	
-	.navbar-brand{
-		font-size: 1.5em;
-	}
-	
-	header.navbar .navbar-nav{
-		font-size: 1.1em;
-	}
-</style>

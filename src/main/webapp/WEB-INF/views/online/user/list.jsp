@@ -6,6 +6,10 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 
+<style>
+	@IMPORT url("${path}/static/css/user.css");
+</style>
+
 <div class="row options">
 	<div class="col-sm-12">
 		<button class="btn btn-primary" data-toggle="modal" data-target="#modal-form">
@@ -14,20 +18,11 @@
 	</div>
 </div>
 <div id="div-table-users">
+	<div class="messages"></div>
 	<jsp:include page="table.jsp"/>
 </div>
 
 <jsp:include page="form.jsp"/>
+<jsp:include page="alert-remove.jsp"/>
 
-<style>
-	.options{
-		margin-top: 5px;
-		margin-bottom: 5px;
-		text-align: right;
-	}
-	
-	.modal-header{
-		color: white;
-		background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
-	}
-</style>
+<script src="${path}/static/js/user.js"></script>

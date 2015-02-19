@@ -17,6 +17,7 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "TBL_SYSTEM_USER")
@@ -94,6 +95,11 @@ public class SystemUser {
 
 	public void setIntegrationConfig(IntegrationConfig integrationConfig) {
 		this.integrationConfig = integrationConfig;
+	}
+
+	public void encodePassword(BCryptPasswordEncoder encoder) {
+		if(this.password!=null)
+			this.password = encoder.encode(password);
 	}
 
 	@Override

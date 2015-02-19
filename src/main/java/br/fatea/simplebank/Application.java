@@ -32,6 +32,7 @@ public class Application implements WebApplicationInitializer {
 		
 		FilterRegistration.Dynamic filter = servletContext.addFilter("openEntityManagerInViewFilter", buildOpenEntityManagerFilter());
 		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/api/*", "/app/*","/ws/*");
+		
 		servletContext.addListener(new ContextLoaderListener(applicationContext));
 	}
 

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<c:set var="path" value="${pageContext.request.contextPath}"/>
+	<c:set var="path" value="${pageContext.request.contextPath}" scope="request"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="${path}/static/libs/jquery-2.1.3.min.js"></script>
 	<script src="${path}/static/libs/bootstrap/js/bootstrap.min.js"></script>
@@ -16,6 +16,7 @@
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap.min.css");
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap-theme.min.css");
 		@IMPORT url("${path}/static/libs/bootstrap/css/sidebar.css");
+		@IMPORT url("${path}/static/css/online-template.css");
 	</style>
 </head>
 	

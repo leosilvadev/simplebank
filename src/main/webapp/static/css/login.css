@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+#sec-login {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+}
+
+#sec-login>form>input {
+	margin-bottom: 10px;
+}
+
+#sec-login>form>button[type=submit] {
+	width: 100%;
+}

@@ -8,11 +8,3 @@
 <footer id="main-footer">
 	SimpleBank - All rights reserved
 </footer>
-
-<style>
-	footer#main-footer{
-		font-size: 1.1em;
-		padding: 2px;
-		text-align: center
-	}
-</style>

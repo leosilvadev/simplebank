@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+footer#main-footer {
+	font-size: 1.1em;
+	padding: 2px;
+	text-align: center
+}

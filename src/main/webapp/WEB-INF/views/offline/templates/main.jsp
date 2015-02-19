@@ -7,16 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<c:set var="path" value="${pageContext.request.contextPath}"/>
+	<c:set var="path" value="${pageContext.request.contextPath}" scope="request"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="${path}/static/libs/jquery-2.1.3.min.js"></script>
 	<script src="${path}/static/libs/bootstrap/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap.min.css");
 		@IMPORT url("${path}/static/libs/bootstrap/css/bootstrap-theme.min.css");
-		#content{
-			background-image: linear-gradient(to bottom,rgba(213, 214, 219, 0.66),rgba(255, 255, 255, 0.66) 100%);
-		}
+		@IMPORT url("${path}/static/css/offline-template.css");
 	</style>
 </head>
 	<body>

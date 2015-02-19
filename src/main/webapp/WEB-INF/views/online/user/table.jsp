@@ -26,10 +26,10 @@
 					</c:forEach>
 				</td>
 				<td class="center">
-					<a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a href="#" class="btn-edit" data-id="${item.id}"><i class="glyphicon glyphicon-pencil"></i></a>
 				</td>
 				<td class="center">
-					<a href="#"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="#" class="btn-remove" data-id="${item.id}"><i class="glyphicon glyphicon-trash"></i></a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -40,46 +40,3 @@
 		</tr>
 	</tfoot>
 </table>
-
-<style>
-	table{
-		width: 100%;
-	}
-	
-	table>thead>tr>td{
-		background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
-		padding: 5px;
-		color: rgba(255, 255, 255, 0.88);
-		font-size: 1.2em;
-	}
-	
-	table>thead>tr>td:FIRST-CHILD{
-		border-radius: 10px 0px 0px 0px;
-	}
-	
-	table>thead>tr>td:LAST-CHILD{
-		border-radius: 0px 10px 0px 0px;
-	}
-	
-	table>tfoot>tr>td{
-		background-color: rgba(239, 239, 239, 0.53);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-		padding: 5px;
-		text-align: right;
-		font-size: 1.2em;
-	}
-	
-	table>tbody>tr>td{
-		padding: 5px;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-	}
-	
-	table i.glyphicon{
-		color: gray;
-		font-size: 1.5em;
-	}
-	
-	.center{
-		text-align: center;
-	}
-</style>

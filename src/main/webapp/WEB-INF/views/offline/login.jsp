@@ -5,6 +5,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
+
+<style>
+	@IMPORT url("${path}/static/css/login.css");
+</style>
+
 <section id="sec-login">
 	<form action="authenticate" method="post">
 		<label for="username">Username:</label>
@@ -16,20 +21,3 @@
 		<button type="submit" class="btn btn-primary">LogIn</button>
 	</form>
 </section>
-
-<style>
-	#sec-login{
-		width: 400px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 50px;
-	}
-	
-	#sec-login>form>input{
-		margin-bottom: 10px;
-	}
-	
-	#sec-login>form>button[type=submit]{
-		width: 100%;
-	}
-</style>
